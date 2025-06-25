@@ -34,3 +34,6 @@ go.work.sum
 
 # git related files 
 .git/
+
+# adding storage folder
+.storage/

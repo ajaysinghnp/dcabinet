@@ -1,0 +1,8 @@
+env: "development"
+database: ".storage/database.db"
+http_server:
+  host: "localhost"
+  port: 8000
+
+logging:
+  level: "DEBUG"
