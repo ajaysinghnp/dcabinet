@@ -28,6 +28,9 @@ Init the Backend API project inside the root of the directory with this command
 
 ```terminal
 go mod init github.com/your_username/dcabinet
+
+# eg. 
+# go mod init github.com/ajaysinghnp/dcabinet
 ```
 
 This will generate a `go.mod` file that contains all the metadata and information regarding the project like `project_name`, `dependencies`, `go version` etc. Basically it is equivalent to the `package.json` in the `Nodejs` environment.
