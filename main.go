@@ -23,12 +23,14 @@ func main() {
 	})
 
 	// setup server
-	fmt.Println("Starting server on", config.HTTPServer.Host+":"+string(config.HTTPServer.Port))
+	http_addr := config.HTTPServer.Host + ":" + config.HTTPServer.Port
+
 	server := &http.Server{
-		Addr:    config.HTTPServer.Host + ":" + string(config.HTTPServer.Port),
+		Addr:    http_addr,
 		Handler: router,
 	}
 	// start server
+	fmt.Println("Starting server on", http_addr)
 	if err := server.ListenAndServe(); err != nil {
 		log.Fatal("Failed to start server: ", err)
 	}

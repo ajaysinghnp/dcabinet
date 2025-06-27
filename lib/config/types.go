@@ -2,7 +2,7 @@ package config
 
 type HTTPServer struct {
 	Host string `yaml:"host" json:"host" env-default:"localhost" env-description:"Server Host" env-required:"true"`
-	Port int    `yaml:"port" json:"port" env-default:"8000" env-description:"Server Port" env-required:"true"`
+	Port string `yaml:"port" json:"port" env-default:"8000" env-description:"Server Port" env-required:"true"`
 }
 
 type Config struct {
