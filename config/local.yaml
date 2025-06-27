@@ -3,6 +3,7 @@ database: ".storage/database.db"
 http_server:
   host: "localhost"
   port: 8000
+  timeout: 5
 
 logging:
   level: "DEBUG"

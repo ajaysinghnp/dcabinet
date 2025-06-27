@@ -1,8 +1,11 @@
 package config
 
+import "time"
+
 type HTTPServer struct {
-	Host string `yaml:"host" json:"host" env-default:"localhost" env-description:"Server Host" env-required:"true"`
-	Port string `yaml:"port" json:"port" env-default:"8000" env-description:"Server Port" env-required:"true"`
+	Host    string        `yaml:"host" json:"host" env-default:"localhost" env-description:"Server Host" env-required:"true"`
+	Port    string        `yaml:"port" json:"port" env-default:"8000" env-description:"Server Port" env-required:"true"`
+	Timeout time.Duration `yaml:"timeout" json:"timeout" env-default:"5" env-description:"Request Timeout in seconds" env-required:"true"`
 }
 
 type Config struct {
