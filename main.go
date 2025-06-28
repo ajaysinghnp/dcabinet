@@ -4,6 +4,7 @@ import (
 	"context"
 	"log"
 	"log/slog"
+	"net/http"
 	"os"
 	"os/signal"
 	"syscall"
@@ -33,12 +34,13 @@ func main() {
 	signal.Notify(done, os.Interrupt, syscall.SIGTERM, syscall.SIGINT)
 
 	go func() {
-		if err := server.ListenAndServe(); err != nil {
+		if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 			log.Fatal("Failed to start server: ", err)
 		}
 	}()
 
 	slog.Info("Starting server on", "address", http_addr)
+
 	<-done
 
 	slog.Info("Shutting down server...")
@@ -52,5 +54,6 @@ func main() {
 	}
 
 	slog.Info("Server Stopped Successfully")
+
 	os.Exit(0)
 }
