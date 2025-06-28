@@ -11,13 +11,23 @@ import (
 
 	"github.com/ajaysinghnp/dcabinet/api"
 	"github.com/ajaysinghnp/dcabinet/lib/config"
+	"github.com/ajaysinghnp/dcabinet/lib/database/sqlite"
 )
 
 func main() {
 	// load config
 	config := config.MustLoad()
+	slog.Info("Configuration Loaded")
 
 	// database setup
+	db, err := sqlite.New(config)
+	if err != nil {
+		slog.Error("Failed to initialize database", "error", err)
+		os.Exit(0)
+	}
+	slog.Info("Database Initialized Successfully")
+
+	defer db.DB.Close()
 
 	// setup router
 	router := api.NewRouter()
@@ -39,7 +49,7 @@ func main() {
 		}
 	}()
 
-	slog.Info("Starting server on", "address", http_addr)
+	slog.Info("Starting server on", "url", http_addr)
 
 	<-done
 
