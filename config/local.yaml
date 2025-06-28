@@ -1,5 +1,7 @@
 env: "development"
-database: ".storage/database.db"
+database:
+  type: "sqlite3"
+  url: ".storage/database.db"
 http_server:
   host: "localhost"
   port: 8000
