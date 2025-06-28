@@ -1,4 +1,4 @@
-package ui
+package navigation
 
 import "net/http"
 
