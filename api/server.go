@@ -2,6 +2,8 @@ package api
 
 import (
 	"net/http"
+
+	handlers "github.com/ajaysinghnp/dcabinet/api/home"
 )
 
 func NewServer(addr string, router *http.ServeMux) *http.Server {
@@ -18,10 +20,7 @@ func NewRouter() *http.ServeMux {
 	// setup router
 	router := http.NewServeMux()
 
-	router.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		w.WriteHeader(http.StatusOK)
-		w.Write([]byte("Welcome to DCabinet!"))
-	})
+	router.HandleFunc("/", handlers.Home)
 
 	return router
 }
