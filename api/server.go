@@ -3,7 +3,7 @@ package api
 import (
 	"net/http"
 
-	handlers "github.com/ajaysinghnp/dcabinet/api/home"
+	ui "github.com/ajaysinghnp/dcabinet/api/home"
 )
 
 func NewServer(addr string, router *http.ServeMux) *http.Server {
@@ -20,7 +20,8 @@ func NewRouter() *http.ServeMux {
 	// setup router
 	router := http.NewServeMux()
 
-	router.HandleFunc("/", handlers.Home)
+	// root handler
+	router.HandleFunc("/", ui.Home())
 
 	return router
 }
